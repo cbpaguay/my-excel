@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.cbpaguay'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+	
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //myexcel
+
+    implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+    implementation group: 'com.github.liaochong', name: 'myexcel', version: '4.1.0'
+
+    // postgres
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.5'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
